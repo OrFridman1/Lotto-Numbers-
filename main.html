@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+    <title>Title</title>
+    <script>
+        function Save() {
+            localStorage.setItem("amount", document.getElementById("amount").value);
+            localStorage.setItem("from", document.getElementById("from").value);
+            localStorage.setItem("to", document.getElementById("to").value);
+        }
+
+        function Open() {
+            console.log("start");
+            var from = localStorage.getItem("from");
+            console.log(from + "****from");
+            var amount = localStorage.getItem("amount");
+            console.log(amount + "****amount")
+            var to = localStorage.getItem("to");
+            console.log(to + "****to")
+            console.log("end")
+            var num,n,n1;
+            var list;
+            var arr = new Array(amount);
+            for(var i=0; i<amount;i++) {
+                from = Math.ceil(from);
+                to = Math.floor(to);
+                num = Math.floor(Math.random() * (to - from)) + from;
+                arr[i] = Math.round(num);
+            }
+            for(i=0; i<amount;i++) {
+                document.getElementById('result').innerHTML = "Numbers is: " + arr;
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+<center>
+<div data-role="page"  data-theme="a">
+    <div data-role="header">
+        <h1>Welcome to the Loto Numbers Game</h1>
+    </div>
+    <div data-role="content">
+    <h1>Welcome to the Loto Numbers Game</h1>
+<button id="button" class="button" onclick="Open()"  data-inline="true">Generate</button>
+
+    <a href="settings.html" data-role="button"   data-inline="true" data-icon="forward" data-transition="slide">Settings</a>
+
+    <div id="result"></div>
+    </div>
+
+    <div data-role="footer">
+        <a href="tel:972546655837">Please contact us in: 972546655837</a>
+    </div>
+
+</div>
+</center>
+</body>
+</html>
